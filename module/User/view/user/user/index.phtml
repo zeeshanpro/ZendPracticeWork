@@ -1,0 +1,47 @@
+<?php
+// module/Album/view/album/album/index.phtml:
+
+$title = 'Users';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+<p>
+    <a href="<?= $this->url('user', ['action' => 'create']) ?>">Add new user</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Address</th>
+        <th>Mobile</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach ($this->paginator as $user) : ?>
+        <tr>
+            <td><?= $this->escapeHtml($user->name) ?></td>
+            <td><?= $this->escapeHtml($user->email) ?></td>
+            <td><?= $this->escapeHtml($user->address) ?></td>
+            <td><?= $this->escapeHtml($user->mobile) ?></td>
+            <td>
+                <a href="<?= $this->url('user', ['action' => 'update', 'id' => $user->id]) ?>">Edit</a>
+                <a href="<?= $this->url('user', ['action' => 'delete', 'id' => $user->id]) ?>">Delete</a>
+            </td>
+        </tr>
+    <?php endforeach; ?>
+</table>
+<?php
+// add at the end of the file after the table
+echo $this->paginationControl(
+// the paginator object
+    $this->paginator,
+    // the scrolling style
+    'sliding',
+    // the partial to use to render the control
+    'partial/paginator.phtml',
+    // the route to link to when a user clicks a control link
+    array(
+        'route' => 'user'
+    )
+);
+?>

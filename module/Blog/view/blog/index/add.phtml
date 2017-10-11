@@ -1,0 +1,43 @@
+
+<h1>Add Blog Post</h1>
+
+<?php
+
+/** @var Zend\Form\Form $form */
+$form=$this->form;
+$form->prepare();
+
+echo $this->form()->openTag($form);//<form action="" method="Post">
+
+?>
+
+<div class="form-group">
+
+    <?php echo $this->FormRow($form->get('Title')) ?>
+
+
+</div>
+<div class="form-group">
+
+    <?php echo $this->FormRow($form->get('Slug')) ?>
+
+
+</div>
+<div class="form-group">
+
+    <?php echo $this->FormRow($form->get('Content')) ?>
+
+
+</div>
+<div class="form-group">
+
+    <?php echo $this->FormRow($form->get('Category')) ?>
+
+
+</div>
+<div class="form-group">
+
+    <?php echo $this->FormRow($form->get('submit')) ?>
+
+
+</div>
